@@ -5,8 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title>TreeNote</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .nav {
+            height: 44px;
+            width: 100%;
+            background: #ff0;
+        }
+        .container {
+            position: absolute;
+            background: #0f0;
+            left: 0;
+            right: 0;
+            top: 44px;
+            bottom: 0;
+        }
+        .tree {
+            height: 100%;
+            background: #f00;
+            overflow-y: auto;
+            width: 120px;
+            float: left;
+        }
+        .split-line {
+            border-left-width: 1px;
+            cursor: e-resize;
+            z-index: 9999;
+            background: #0ff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 5px;
+            left: 120px;
+        }
+        .split-line-preview {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 5px;
+            left: 160px;
+            background: rgba(0,0,0,0.3);
+            z-index: 9000;
+        }
+        .content {
+            width: auto;
+            background: #00f;
+            height: 100%;
+            margin-left: 125px;
+            overflow-y: auto;
+        }
+        .overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.8);
+            z-index: 5000;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-    Hello, TreeNote.
+<body style="height:100vh;position: relative;">
+    <div class="nav">
+
+    </div>
+    <div class="container">
+        <div class="tree">
+            <div style="width: 100%;height: 200vh;">
+
+            </div>
+        </div>
+        <div class="split-line"></div>
+        <div class="content">
+            <div style="width: 100%;height: 200vh;">
+
+            </div>
+        </div>
+        <div class="split-line-preview"></div>
+    </div>
+    <div class="hidden overlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script>
+        var splitLinePos = 0;
+        $('.split-line').mousedown(function(e) {
+            $('.overlay').removeClass('hidden');
+            console.log(e.clientX);
+            splitLinePos = e.clientX;
+        });
+
+        $('.split-line').mousemove(function(e) {
+            var curPos = e.clientX;
+            $(this)
+        });
+
+        $('.split-line').mouseup(function(e) {
+            $('.overlay').addClass('hidden');
+        });
+    </script>
 </body>
 </html>
